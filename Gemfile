@@ -6,7 +6,9 @@ gem 'rails', '3.2.9'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-
+gem 'devise'
+gem 'carrierwave', '0.5.4'
+gem 'kaminari'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,6 +21,16 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+group :test do
+  gem 'shoulda'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+end
+
+group :development, :test do
+  gem "rspec-rails"
+end  
 
 gem 'jquery-rails'
 
