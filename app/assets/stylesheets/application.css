@@ -212,9 +212,40 @@ hr {
 
 /** CONTENT */
 
+.list_items {
+  float: left;
+  width: 300px;
+  padding: 15px;
+  height: auto;
+}
+
+.list_items:hover {
+  border-radius: 0 15px 15px 0;
+  background: red;
+ 
+  padding: 15px;
+
+}
+
+.prod_image img {
+  width: 100px;
+  height: 100%;
+  float: left
+}
+
+.list_items h3 {
+  font-weight: bold;
+  padding-bottom: 7px;
+}
+
 #content {
 	float: right;
 	width: 750px;
+}
+
+.list_price {
+    font-size: 150%;
+	color: green;
 }
 
 /** SIDEBAR */
