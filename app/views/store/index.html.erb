@@ -19,7 +19,9 @@
           <%= truncate(strip_tags(product.description), length: 80) %>
           
           <p class="list_price"><%= number_to_currency(product.price) %></p>
-          <%= button_to "Add to cart", line_items_path(product_id: product) %>
+
+          <%= button_to "Add to cart", line_items_path(product_id: product),
+          class: "button-style", remote: true %>
           
      
     </div>

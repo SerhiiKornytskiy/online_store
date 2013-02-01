@@ -1,6 +1,11 @@
 class LineItemsController < ApplicationController
-  # GET /line_items
-  # GET /line_items.json
+  
+  before_filter :find_line_item, :only => [:show, :destroy, :update]
+
+  def find_line_item
+    @line_item = LineItem.find(params[:id])
+  end  
+
   def index
     @line_items = LineItem.all
 
@@ -13,8 +18,6 @@ class LineItemsController < ApplicationController
   # GET /line_items/1
   # GET /line_items/1.json
   def show
-    @line_item = LineItem.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @line_item }
@@ -33,34 +36,24 @@ class LineItemsController < ApplicationController
   end
 
   # GET /line_items/1/edit
-  def edit
-    @line_item = LineItem.find(params[:id])
-  end
+ 
 
   # POST /line_items
   # POST /line_items.json
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-
-    @line_item = @cart.line_items.build
-    @line_item.product = product
-
+    @line_item = @cart.add_product(product.id)
+    
     respond_to do |format|
-
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Line item was successfully created.' }
-        format.json { render json: @line_item, status: :created, location: @line_item }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.js { @current_item = @line_item }
       end
     end
+    
   end
 
   def update
-    @line_item = LineItem.find(params[:id])
-
     respond_to do |format|
       if @line_item.update_attributes(params[:line_item])
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
@@ -74,7 +67,7 @@ class LineItemsController < ApplicationController
 
 
   def destroy
-    @line_item = LineItem.find(params[:id])
+    
     @line_item.destroy
 
     respond_to do |format|
@@ -82,4 +75,5 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

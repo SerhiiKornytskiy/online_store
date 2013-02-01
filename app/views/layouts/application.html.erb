@@ -36,11 +36,16 @@
 			</ul>
 		</div>
 	</div>
-  <div id="page">
-  
-  <%= yield %>
 
+  <div id="page">
+    <%= yield %>
   </div>
+
+  <div>
+    <%= render @cart %>
+  </div>
+   
+
 	<div id="three-column">
 		<div id="tbox1">
 			<h2>Praesent condimentum</h2>
@@ -66,6 +71,11 @@
 			</ul>
 		</div>
 	</div>
+
+    
+   
+
+
 	<div id="footer">
 		<p>Copyright (c) 2013 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by <a href="http://fotogrph.com/">Fotogrph</a>.</p>
 	</div>

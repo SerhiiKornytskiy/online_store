@@ -52,6 +52,7 @@ strong {
 
 a {
 	color: #2C2C2C;
+	text-decoration: none;
 }
 
 a:hover {
@@ -373,6 +374,12 @@ ul.style2 a:hover {
 	text-transform: uppercase;
 	color: #FFFFFF;
 }
+
+
+
+
+
+
 
 
 
