@@ -9,10 +9,7 @@ class LineItemsController < ApplicationController
   def index
     @line_items = LineItem.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @line_items }
-    end
+
   end
 
   # GET /line_items/1
@@ -46,11 +43,9 @@ class LineItemsController < ApplicationController
     @line_item = @cart.add_product(product.id)
     
     respond_to do |format|
-      if @line_item.save
-        format.js { @current_item = @line_item }
-      end
+      format.js { @current_item = @line_item } if @line_item.save
     end
-    
+
   end
 
   def update
@@ -69,11 +64,13 @@ class LineItemsController < ApplicationController
   def destroy
     
     @line_item.destroy
-
+  
     respond_to do |format|
-      format.html { redirect_to line_items_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
+      format.js
     end
+
   end
 
 end

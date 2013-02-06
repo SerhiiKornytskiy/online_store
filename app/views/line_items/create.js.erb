@@ -1,3 +1,17 @@
 
-$('.cart').html("<%=j render @cart  %>");
-$('#current_item').css({'background-color':'#FFFF00'}).animate({'background-color':'#FFFFFF'}, 1000);
+
+$('.cart2').html("<%=j render @cart  %>");
+
+$('.total').css({'background-color':'#FFFF00'}).animate({'background-color':'#FFFFFF'}, 1000);
+
+
+
+
+if ($('.cart2 table tr').length <= 1){
+  $('.cart2').hide();
+
+}
+
+if ($('.cart2 table tr').length >= 2){
+  $('.cart2').css(".shadow");
+}

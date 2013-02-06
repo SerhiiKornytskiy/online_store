@@ -1,16 +1,17 @@
-<div class="cart">
 
 <% unless cart.line_items.empty? %>
- <h1>Your cart</h1>
- <table>
+<div class="cart3">
+<h1>Your cart</h1>
+ <table class="list_table">
    <%= render(cart.line_items) %>
-   <tr> 
+   <tr class = "total"> 
      <td> Total </td>
      <td> <%= number_to_currency(cart.total_price) %> </td>
    </tr>
  </table>
 
- <p><%= link_to "Clear_cart", cart, method: :delete, confirm: "You sure?",
- class: "button-style" %><p>
-<% end %>
+ <p><%= link_to "Clear_cart", cart, method: :delete, confirm: "You sure?", remote: true,
+ class: "button-style"%><p>
+
 </div>
+<% end %>
