@@ -8,8 +8,22 @@ class LineItemsController < ApplicationController
 
   def index
     @line_items = LineItem.all
+  end
 
-
+  def decrease 
+    @cart = current_cart
+    @line_item = @cart.decrease_line_item_quantity(params[:id])
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to store_path, notice: 'Line item was successfully updated.' }
+        format.js {@current_item = @line_item}
+        format.json { head :ok }
+      else
+        format.html { render action: "edit" }
+        format.js {@current_item = @line_item}
+        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /line_items/1
