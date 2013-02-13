@@ -92,6 +92,10 @@ hr {
 	box-shadow: 0px 0px 10px 5px rgba(0,0,0,.2);
 }
 
+.field textarea {
+	resize: none;
+}
+
 .entry {
     width: 45%;
     background: #D7D7D8;

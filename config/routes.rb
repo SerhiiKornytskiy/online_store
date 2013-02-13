@@ -1,5 +1,7 @@
 OnlineStore::Application.routes.draw do
   
+  resources :orders
+
   resources :line_items
 
   resources :line_items do
@@ -8,8 +10,6 @@ OnlineStore::Application.routes.draw do
   end
 
   resources :carts
-
-
 
   resources :products
 
