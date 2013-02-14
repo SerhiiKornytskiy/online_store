@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  
+  paginates_per 3
   has_many :line_items
 
   before_destroy :ensure_empty

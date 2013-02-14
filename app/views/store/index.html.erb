@@ -6,7 +6,7 @@
 
 <h1> For Customer: </h1>
 <br>
-
+  <p><%= paginate @products %></p>
   <% @products.each do |product| %>
     <div class="list_items">
       <div class="prod_image">
@@ -26,8 +26,11 @@
      
     </div>
     <%end%>
-
-
+  <br>
+ 
+<div class="cart2">
+    <%= render @cart %>
+</div>
 
 
 
