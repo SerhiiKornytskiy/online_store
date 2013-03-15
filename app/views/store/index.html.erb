@@ -9,6 +9,7 @@
   <p><%= paginate @products %></p>
   <% @products.each do |product| %>
     <div class="list_items">
+      
       <div class="prod_image">
         <%= image_tag(product.image_url) %>
       </div>
