@@ -11,6 +11,9 @@ gem 'carrierwave', '0.5.4'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'devise'
+gem 'mechanize'
+gem "recaptcha", :require => "recaptcha/rails"
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

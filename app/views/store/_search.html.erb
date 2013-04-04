@@ -1,0 +1,3 @@
+<%= form_tag :controller => 'store', :action => 'search', :method => 'get' do  %>
+  <%= select_tag :search, Product.find_by_sql("SELECT DISTINCT title FROM products;")%>
+<% end %>

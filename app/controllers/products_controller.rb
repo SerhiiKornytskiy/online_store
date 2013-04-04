@@ -1,37 +1,37 @@
 class ProductsController < ApplicationController
-
+  before_filter :authenticate_user!, :only => [:index, :new, :create, :edit, :update]
   def index
     @products = Product.order(:title).page params[:page]
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
+
     end
   end
 
 
   def show
+    @comment = Comment.new
     @product = Product.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
+      format.js
     end
+    
   end
 
   def new
     @product = Product.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @product }
     end
   end
 
-
   def edit
     @product = Product.find(params[:id])
   end
-
 
   def create
     @product = Product.new(params[:product])
@@ -71,4 +71,7 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
 end

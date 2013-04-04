@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :authenticate_user!, :only => [:destroy, :index] 
   # GET /orders
   # GET /orders.json
   def index
@@ -10,16 +11,8 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1
-  # GET /orders/1.json
-  def show
-    @order = Order.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @order }
-    end
-  end
+ 
 
   def new
   @cart = current_cart
@@ -35,14 +28,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1/edit
+
   def edit
     @order = Order.find(params[:id])
   end
 
-  # POST /orders
-  # POST /orders.json
+
   def create
+    @cart = current_cart
     @order = Order.new(params[:order])
     @order.add_items_from_cart(current_cart)
     respond_to do |format|

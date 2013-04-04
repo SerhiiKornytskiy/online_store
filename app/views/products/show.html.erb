@@ -1,25 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @product.title %>
-</p>
 
+
+<div class="show_image">
+  <%= image_tag @product.image_url %>
+</div>
+
+<div class="description_item">
+
+<div class="show_item_holder">
 <p>
-  <b>Description:</b>
+  <h1><%= @product.title %></h1>
+</p>
+<b>Description:</b>
   <%= @product.description %>
+</div>
+<p class="list_price">
+  <%= "$#{@product.price}" %>
 </p>
+<%= link_to 'Back', products_path, class: "button-style" %>
+</div>
 
-<p>
-  <b>Image url:</b>
-  <%= @product.image_url %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product.price %>
-</p>
+<br>
 
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+
+<div class="show_comments">
+  <% @product.comments.reverse.each do |comment| %>
+    <ul>
+      <li><p><b><%= comment.nickname %></b>:</p></li>
+      <li><p><%= comment.content %></p></li>
+      <li><p><%= comment.created_at %></p></li>
+      <% if current_user && current_user.admin? %>
+      <tr>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+      
+    </ul>
+  <% end %>  
+</div> 
+
+<div class="on_off">
+  <%= link_to "Leave comment", remote: true %>
+</div>
+ 
+
+<div>
+  <%= render "comments/form" %>
+</div>  

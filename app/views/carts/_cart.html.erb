@@ -10,11 +10,11 @@
    </tr>
  </table>
 
-<p><%= link_to "Clear_cart", cart, method: :delete, confirm: "You sure?", remote: true,
-  class: "button-style"%><p>
+<p><%= link_to "Clear cart", cart, method: :delete, confirm: "You sure?", remote: true,
+  class: "button-style" %>
 
-<p><%= link_to "Buy items", new_order_path, confirm: "You sure?", remote: true,
-  class: "button-style"%><p>
+<%= link_to "Buy items", new_order_path, confirm: "You sure?", remote: true,
+  class: "button-style" %></p>
 
 </div>
 <% end %>

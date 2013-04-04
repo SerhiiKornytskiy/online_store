@@ -1,7 +1,8 @@
 OnlineStore::Application.routes.draw do
-  
-  resources :users
 
+  resources :comments
+
+  devise_for :users, :skip => :registrations
 
   resources :orders
 
@@ -12,11 +13,17 @@ OnlineStore::Application.routes.draw do
     resources :carts
   end
 
+  get "/search" => "store#search"
+
   resources :carts
 
   resources :products
 
   root :to => "store#index", as: 'store'
+
+  match "*path" => 'error#handle404'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

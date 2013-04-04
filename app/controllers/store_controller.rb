@@ -3,4 +3,9 @@ class StoreController < ApplicationController
     @products = Product.order(:title).page params[:page]
     @cart = current_cart
   end
+
+  def search 
+    
+  end
+  
 end

@@ -53,7 +53,7 @@ module OnlineStore
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
-    config.autoload_paths += "#{Rails.root}/app/uploaders"
+    
 
     # Enable the asset pipeline
     config.assets.enabled = true

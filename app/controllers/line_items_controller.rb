@@ -7,7 +7,7 @@ class LineItemsController < ApplicationController
   end  
 
   def index
-    @line_items = LineItem.all
+    @line_items = LineItem.order(:title)
   end
 
   def decrease 

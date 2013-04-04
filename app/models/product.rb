@@ -1,6 +1,9 @@
 class Product < ActiveRecord::Base
-  paginates_per 3
+
+  paginates_per 9
+  
   has_many :line_items
+  has_many :comments, :dependent => :destroy
 
   before_destroy :ensure_empty
   mount_uploader :image_url, ImageUrlUploader
@@ -13,5 +16,5 @@ class Product < ActiveRecord::Base
   def ensure_empty
     line_items.empty?
   end
-    
+
 end
