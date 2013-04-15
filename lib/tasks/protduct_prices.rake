@@ -32,7 +32,7 @@ page = agent.get("http://rozetka.com.ua/")
       product.update_attribute(:price, price) if name.delete(" ").include? product.title.delete(" ")
     end
 
-    page.form = nil
+    
 
   end  
  

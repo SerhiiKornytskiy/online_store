@@ -12,8 +12,8 @@ OnlineStore::Application.routes.draw do
     put 'decrease', on: :member
     resources :carts
   end
-
-  get "/search" => "store#search"
+  
+  match "/category" => "products#category"
 
   resources :carts
 

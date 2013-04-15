@@ -7,8 +7,8 @@
         <%= image_tag(product.image_url) %>
       </div>
           <h3><%= product.title %></h3>
-          <%= truncate(strip_tags(product.description), length: 80) %>>
-       
+          
+          <%= truncate(strip_tags(product.description), length: 80) %>
         <%= link_to "Show", product %>
         <%= link_to "Edit", edit_product_path(product) %>
         <%= link_to "Destroy", product, confirm: "You sure?", method: :delete %>

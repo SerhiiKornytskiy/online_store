@@ -1,7 +1,5 @@
 class CommentsController < ApplicationController
 
-
-
   def new
     @comment = Comment.new
 
@@ -18,7 +16,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(params[:comment])
-
+    Comment.censore(@comment)
     respond_to do |format|
       if @comment.save
         redirect_to :back
@@ -32,7 +30,6 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find(params[:id])
-
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html { redirect_to store_url, notice: 'Comment was successfully updated.' }
@@ -48,7 +45,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
     respond_to do |format|
       format.html { redirect_to :back }
       format.json { head :no_content }

@@ -35,7 +35,7 @@
 				<li><a href="#" accesskey="5" title="">Contact Us</a></li>
 				<% if current_user && current_user.admin? %>
 				  <li><%= link_to "log out", destroy_user_session_path, 
-				  :method => :delete  %></li>
+				  method: :delete  %></li>
 				<% end %>
 			</ul>
 		</div>
@@ -43,9 +43,9 @@
 
     <div class="submenu">
       <ul>
-        <% @it = Product.find(:all)%>
-        <% @it.each do |name|%>
-          <li><%= link_to "#{name.title}" %></li>
+        <% @category = Product.find_by_sql("SELECT DISTINCT category FROM products")%>
+        <% @category.each do |cat| %>
+          <li><%= link_to "#{cat.category}", category_path(category: cat.category)%></li>
         <% end %>
       </ul>                   
     </div>	
@@ -57,7 +57,7 @@
   </div>
 
   <div class="cart2">
-    <%= render @cart if @cart != nil %>
+    <%= render @cart if @cart%>
   </div>
   
 

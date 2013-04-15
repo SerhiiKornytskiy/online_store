@@ -4,8 +4,6 @@ class StoreController < ApplicationController
     @cart = current_cart
   end
 
-  def search 
-    
-  end
+  
   
 end

@@ -10,20 +10,30 @@
   
   <% @products.each do |product| %>
     <div class="list_items">
-      
       <div class="prod_image">
         <%= image_tag(product.image_url) %>
-
-        <%= button_to "Add to cart", line_items_path(product_id: product),
-          class: "button-style", remote: true %>
       </div>
 
+      <div>
           <h3><%= link_to product.title, product %></h3>
+          <p><%= link_to "#{product.category}", category_path(category: product.category) %></p>
           <h3>Description:</h3>
+          <% if product.description? %>
+            <p><%= truncate(strip_tags(product.description), length: 80) %></p>
+          <% else %>
+            <p>No description yet...</p>
+          <% end %>
 
-          <%= truncate(strip_tags(product.description), length: 80) %>
-          <p><%= truncate(strip_tags("Comments: #{product.comments.count}")) if product.comments.count > 0 %></p>
+          <% if product.comments.count > 0 %>
+            <p><%= truncate(strip_tags("Comments: #{product.comments.count}")) %></p>
+          <% else %>
+            <p>No comments yet.</p>
+          <% end %>
+          
+          <%= button_to "Add to cart", line_items_path(product_id: product),
+          class: "button-style", remote: true %>
           <p class="list_price"><%= number_to_currency(product.price) %></p>
+      </div>
     </div>
     <%end%>
   <br>

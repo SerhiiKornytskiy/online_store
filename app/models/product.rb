@@ -8,8 +8,8 @@ class Product < ActiveRecord::Base
   before_destroy :ensure_empty
   mount_uploader :image_url, ImageUrlUploader
 
-  attr_accessible :description, :image_url, :price, :title, :id
-  validates :description, :image_url, :price, :title, presence: true
+  attr_accessible :description, :image_url, :price, :title, :category, :id
+  validates :description, :image_url, :price, :title, :category, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 0.0}
   validates_presence_of :image_url
 

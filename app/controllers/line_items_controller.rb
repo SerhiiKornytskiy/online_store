@@ -46,20 +46,13 @@ class LineItemsController < ApplicationController
     end
   end
 
-  # GET /line_items/1/edit
- 
-
-  # POST /line_items
-  # POST /line_items.json
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
-    
+    @line_item = @cart.add_product(product.id) if product.price > 0
     respond_to do |format|
       format.js { @current_item = @line_item } if @line_item.save
     end
-
   end
 
   def update
@@ -76,9 +69,7 @@ class LineItemsController < ApplicationController
 
 
   def destroy
-    
     @line_item.destroy
-  
     respond_to do |format|
       format.html { redirect_to :back }
       format.json { head :no_content }

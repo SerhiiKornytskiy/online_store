@@ -4,15 +4,11 @@ class OrdersController < ApplicationController
   # GET /orders.json
   def index
     @orders = Order.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }
     end
   end
-
-
- 
 
   def new
   @cart = current_cart
